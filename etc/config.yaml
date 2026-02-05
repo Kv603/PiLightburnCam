@@ -1,0 +1,10 @@
+web:
+  port: 8080
+  auth:
+    #username: "USERNAME"
+    #password: "PASSWORD"
+  api_keys: ["FIRST-KEY", "SECOND-KEY"]
+  refresh_rate: 10
+  placeholder_image: "error_placeholder.jpg"
+
+camera_config_path: "config-camera.yaml"
