@@ -1,0 +1,19 @@
+#
+# Strongly recommended to create a new, unpriviledged user for this,
+# and change the User= from 'pi' to this new username.
+#
+[Unit]
+Description=Picamera2 HTTP Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 %h/bin/camera_service.py -c %h/etc/config.yaml
+WorkingDirectory=%h/var
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+Group=video
+
+[Install]
+WantedBy=multi-user.target
