@@ -13,6 +13,11 @@ Prerequisites:
 You can get the required modules using  `pip install flask pyyaml apscheduler picamera2 Pillow`
 On Raspian, easiest to get the packaged version of the required modules via:
 ```
-sudo apt-get update
+sudo apt-get update -y
+sudo apt-get upgrade -y
 sudo apt install python3-flask python3-picamera2 python3-yaml python3-apscheduler --fix-missing
 ```
+
+### Notes on picamera2
+
+[Picamera2](https://github.com/raspberrypi/picamera2) is only supported on Raspberry Pi OS Bullseye (or later) images, both 32 and 64-bit. As of September 2022, Picamera2 is pre-installed on Raspberry Pi OS images, but not on Raspberry Pi OS Lite images. It works on all Raspberry Pi boards right down to the Pi Zero, although performance in some areas may be worse on less powerful devices.
