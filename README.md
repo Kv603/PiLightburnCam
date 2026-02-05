@@ -6,16 +6,27 @@ This is a minimalist implementation of a HTTP webserver to serve up /snapshot.jp
 Prerequisites:
 
  * A supported pi camera
- * Modules as listed in requirements.txt
+ * Modules as listed in requirements.txt:
+ *     flask pyyaml apscheduler picamera2 Pillow
  * Add the user this will run under to the group "video" (or use the provided .service file)
- *    sudo groupmod -a -U $USER video
+ *     sudo groupmod -a -U $USER video
        
-You can get the required modules using  `pip install flask pyyaml apscheduler picamera2 Pillow`
-On Raspian, easiest to get the packaged version of the required modules via:
+Fetch all required modules using  ``
+Raspian quick stat:
 ```
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt install python3-flask python3-picamera2 python3-yaml python3-apscheduler --fix-missing
+sudo apt install git python3-flask python3-picamera2 python3-yaml python3-apscheduler --fix-missing
+sudo useradd -m -G video picam
+sudo su - picam
+mkdir var etc bin
+git clone https://github.com/Kv603/PiLightburnCam
+cp -r PiLightburnCam/etc/ PiLightburnCam/var/ $HOME
+cp PiLightburnCam/src/camera_service.py bin/ 
+
+# Test the service by running it in the foreground:
+cd $HOME/var
+python3 $HOME/bin/camera_service.py -c $HOME/etc/config.yaml
 ```
 
 ### Notes on picamera2
