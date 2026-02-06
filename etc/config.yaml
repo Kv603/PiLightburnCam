@@ -1,10 +1,29 @@
+# --- Web Service Settings ---
 web:
   port: 8080
+  refresh_rate: 30
+  placeholder_image: "error.jpg"
   auth:
     #username: "USERNAME"
     #password: "PASSWORD"
   api_keys: ["FIRST-KEY", "SECOND-KEY"]
-  refresh_rate: 10
-  placeholder_image: "error_placeholder.jpg"
 
+# --- Logging Controls ---
+# Options: debug, info, warning, error, none
+logging:
+  get_level: "info"   # Logs request path + elapsed processing time
+  post_level: "warning" # Logs state-changing requests
+
+# --- Hardware Selection ---
+# Use '/camera' endpoint to find your ID.  If not supplied, just uses first camera it finds.
+# camera_id: "/base/soc/i2c0mux/i2c@1/ov5647@36" 
+
+# --- Path to persist camera settings file, needs to be writeable ---
 camera_config_path: "config-camera.yaml"
+
+# --- Hard Floor Constraints ---
+# User /config or /set cannot go below these values
+limits:
+  min_width: 640
+  min_height: 480
+  min_quality: 13
